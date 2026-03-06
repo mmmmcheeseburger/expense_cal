@@ -1,0 +1,249 @@
+/* styles.css */
+
+/* --- Import Google Fonts --- */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap");
+
+body {
+  font-family: "Poppins", Arial, sans-serif;
+  background: #f4f6fb;
+  color: #333;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  line-height: 1.6;
+}
+
+/* ✅ Gradient Buttons */
+.gradient-buttons {
+  margin: 25px 0;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.gradient-buttons button {
+  padding: 12px 28px;
+  border: none;
+  border-radius: 50px;
+  font-size: 1.1em;
+  font-weight: bold;
+  cursor: pointer;
+  color: #fff;
+  background: linear-gradient(90deg, #ff6a00, #ee0979, #4facfe, #00f2fe);
+  background-size: 300% 300%;
+  animation: gradientShift 8s ease infinite;
+  transition: transform 0.3s, box-shadow 0.3s;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.gradient-buttons button:hover {
+  transform: scale(1.08);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+}
+
+/* Gradient animation */
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* ✅ Page fade transitions */
+body.fade {
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+body.fade.fade-in {
+  opacity: 1;
+}
+body.fade.fade-out {
+  opacity: 0;
+}
+
+.container {
+  max-width: 900px;
+  margin: auto;
+  padding: 20px;
+}
+
+/* ✅ Header Styling */
+header {
+  margin-bottom: 40px;
+  opacity: 0;
+  transform: translateY(-20px);
+  animation: fadeInDown 0.8s forwards;
+}
+
+@keyframes fadeInDown {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+header h1 {
+  font-size: 3em;
+  font-weight: 700;
+  background: linear-gradient(90deg, #ff6a00, #ee0979, #4facfe, #00f2fe);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: 2px;
+  margin-bottom: 10px;
+}
+
+#balance-display {
+  font-size: 2em;
+  font-weight: 600;
+  color: #28a745;
+  margin-top: 10px;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* ✅ Cards (Boxes) */
+.form-section,
+.list-section,
+.summary-section,
+.tips-section {
+  background: #fff;
+  padding: 25px;
+  margin-bottom: 25px;
+  border-radius: 14px;
+  border: 1px solid rgba(0, 0, 0, 0.08); /* ✅ subtle edge border */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08),
+    /* soft outer */ 0 8px 20px rgba(0, 0, 0, 0.12); /* deeper shadow */
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.6s forwards;
+  transition: box-shadow 0.3s ease;
+}
+
+.form-section:hover,
+.list-section:hover,
+.summary-section:hover,
+.tips-section:hover {
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15), 0 12px 28px rgba(0, 0, 0, 0.18); /* ✅ more lift on hover */
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.form-section h2,
+.list-section h2,
+.summary-section h2,
+.tips-section h2 {
+  font-size: 1.6em;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: #222;
+  border-bottom: 2px solid #eee;
+  padding-bottom: 8px;
+}
+
+/* ✅ Form Styling */
+form label {
+  display: block;
+  margin-bottom: 12px;
+  font-weight: 600;
+  text-align: left;
+}
+
+form input,
+form select {
+  width: 100%;
+  padding: 10px 12px;
+  margin-top: 6px;
+  box-sizing: border-box;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 1em;
+  transition: border 0.3s, box-shadow 0.3s;
+}
+
+form input:focus,
+form select:focus {
+  border-color: #4facfe;
+  box-shadow: 0 0 6px rgba(79, 172, 254, 0.5);
+  outline: none;
+}
+
+form button {
+  padding: 12px 25px;
+  background: #28a745;
+  border: none;
+  color: white;
+  cursor: pointer;
+  border-radius: 8px;
+  font-size: 1.05em;
+  font-weight: 600;
+  transition: background 0.3s, transform 0.2s;
+}
+
+form button:hover {
+  background: #218838;
+  transform: translateY(-2px);
+}
+
+/* ✅ Transaction List */
+#transaction-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+#transaction-list li {
+  display: flex;
+  justify-content: space-between;
+  padding: 14px 12px;
+  margin-bottom: 8px;
+  border-radius: 8px;
+  background: #f9fafc;
+  border: 1px solid #eee;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+#transaction-list li:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+.transaction-type-income {
+  color: #28a745;
+  font-weight: 600;
+}
+.transaction-type-expense {
+  color: #e63946;
+  font-weight: 600;
+}
+
+/* ✅ Charts */
+.charts {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+canvas {
+  background: #fafafa;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  padding: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+@media (min-width: 600px) {
+  .charts {
+    flex-direction: row;
+  }
+  canvas {
+    width: 45% !important;
+  }
+}

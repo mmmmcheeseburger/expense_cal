@@ -1,0 +1,102 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Expense Tracker</title>
+    <link rel="stylesheet" href="styles.css" />
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+  <body class="fade">
+    <!-- ✅ Two Gradient Buttons (replaces navbar) -->
+    <div class="gradient-buttons">
+      <button onclick="window.location.href='index.html'">🏠 Home</button>
+      <button onclick="window.location.href='tax.html'">💰 Tax Website</button>
+    </div>
+
+    <div class="container">
+      <header>
+        <h1>Expense Tracker</h1>
+        <div id="balance-display">Balance: $0.00</div>
+      </header>
+
+      <section class="form-section">
+        <h2>Add Transaction</h2>
+        <form id="transaction-form">
+          <label>
+            Type:
+            <select id="type">
+              <option value="expense">Expense</option>
+              <option value="income">Income</option>
+            </select>
+          </label>
+          <label>
+            Category:
+            <input type="text" id="category" placeholder="e.g., Food, Salary" />
+          </label>
+          <label>
+            Amount:
+            <input type="number" id="amount" step="0.01" min="0" />
+          </label>
+          <label>
+            Date:
+            <input type="date" id="date" />
+          </label>
+          <label>
+            Description:
+            <input type="text" id="description" placeholder="optional" />
+          </label>
+          <button type="submit">Add</button>
+        </form>
+      </section>
+
+      <section class="list-section">
+        <h2>Transactions</h2>
+        <ul id="transaction-list">
+          <!-- items go here -->
+        </ul>
+      </section>
+
+      <section class="summary-section">
+        <h2>Summary</h2>
+        <div class="totals">
+          <div>Total Income: <span id="total-income">$0.00</span></div>
+          <div>Total Expenses: <span id="total-expenses">$0.00</span></div>
+        </div>
+        <div class="charts">
+          <canvas id="categoryChart"></canvas>
+          <canvas id="timeChart"></canvas>
+        </div>
+      </section>
+
+      <section class="tips-section">
+        <h2>Tips & Advice</h2>
+        <div id="tips">You’re off to a great start!</div>
+      </section>
+    </div>
+
+    <script>
+      // ✅ Page fade animation
+      document.addEventListener("DOMContentLoaded", () => {
+        document.body.classList.add("fade-in");
+
+        const buttons = document.querySelectorAll(".gradient-buttons button");
+        buttons.forEach((btn) => {
+          btn.addEventListener("click", (e) => {
+            e.preventDefault();
+            const target = btn.getAttribute("onclick").match(/'([^']+)'/)[1];
+            document.body.classList.remove("fade-in");
+            document.body.classList.add("fade-out");
+            setTimeout(() => {
+              window.location = target;
+            }, 400); // match transition duration
+          });
+        });
+      });
+    </script>
+
+    <script src="cal.js"></script>
+  </body>
+</html>

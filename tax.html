@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Advanced Tax Calculator</title>
+    <link rel="stylesheet" href="stylesTax.css" />
+  </head>
+  <body class="fade">
+    <!-- ✅ Gradient Buttons (replacing navbar) -->
+    <div class="gradient-buttons">
+      <button onclick="window.location.href='index.html'">🏠 Home</button>
+      <button onclick="window.location.href='tax.html'">💰 Tax Website</button>
+    </div>
+
+    <header>
+      <h1>Advanced Tax Calculator</h1>
+      <p>Calculate your taxes with ease based on your location.</p>
+    </header>
+
+    <main>
+      <!-- ✅ Calculator Section -->
+      <section class="calculator">
+        <form id="tax-form">
+          <label for="income">Enter your Income ($):</label>
+          <input
+            type="number"
+            id="income"
+            name="income"
+            placeholder="e.g., 50000"
+            required
+          />
+
+          <label for="state">Select your State:</label>
+          <select id="state" name="state" required>
+            <option value="" disabled selected>Select a state</option>
+          </select>
+
+          <label for="county">Select your County:</label>
+          <select id="county" name="county" required>
+            <option value="" disabled selected>Select a county</option>
+          </select>
+
+          <label for="deductions">Enter Deductions (Optional):</label>
+          <input
+            type="number"
+            id="deductions"
+            name="deductions"
+            placeholder="e.g., 2000"
+          />
+
+          <button type="submit"><span>🧮</span> Calculate Tax</button>
+        </form>
+
+        <!-- ✅ Results -->
+        <div id="result" class="result hidden">
+          <h2>Tax Calculation Result:</h2>
+          <p><strong>State Tax:</strong> $<span id="state-tax">0.00</span></p>
+          <p><strong>County Tax:</strong> $<span id="county-tax">0.00</span></p>
+          <p>
+            <strong>Federal Tax:</strong> $<span id="federal-tax">0.00</span>
+          </p>
+          <p>
+            <strong>Medicare Tax:</strong> $<span id="medicare-tax">0.00</span>
+          </p>
+          <p>
+            <strong>Social Security Tax:</strong> $
+            <span id="social-security-tax">0.00</span>
+          </p>
+          <p><strong>Total Tax:</strong> $<span id="total-tax">0.00</span></p>
+          <p>
+            <strong>Estimated Annual Tax:</strong> $
+            <span id="annual-tax">0.00</span>
+          </p>
+
+          <canvas id="tax-chart" width="300" height="300"></canvas>
+
+          <div id="fun-fact" class="fun-fact"></div>
+          <div id="tax-tip" class="tax-tip"></div>
+        </div>
+      </section>
+
+      <!-- ✅ Info Section -->
+      <section class="info">
+        <h2>How Taxes are Calculated</h2>
+        <p>
+          Taxes are calculated based on your income and location. State and
+          county tax rates are applied individually and summed up for your total
+          tax obligation. Add deductions to lower your taxable income.
+        </p>
+        <ul>
+          <li>
+            <strong>State Tax:</strong> A percentage of your taxable income
+            depending on your state.
+          </li>
+          <li>
+            <strong>County Tax:</strong> Additional taxes applied by your
+            county.
+          </li>
+        </ul>
+      </section>
+    </main>
+
+    <!-- ✅ Footer -->
+    <footer>
+      <p>&copy; 2025 TaxMaster Inc. All rights reserved.</p>
+    </footer>
+
+    <!-- ✅ Toast container -->
+    <div id="toast" class="toast" style="display: none"></div>
+
+    <!-- ✅ Optional Dark Mode Toggle -->
+    <!-- <button id="toggleTheme">🌓 Toggle Theme</button> -->
+
+    <script src="Tax.js"></script>
+  </body>
+</html>
